@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Əhli-Beyt (ə.s) — Nur və Hidayət Mənbəyi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a4d2e;
+            --secondary: #147a4a;
+            --accent: #d4af37;
+            --dark-bg: #061712;
+            --light-bg: #f4f7f5;
+            --card-bg: #ffffff;
+            --text-main: #1c2826;
+            --yt-red: #ff0000;
+        }
+
+        /* Dark Theme Variables Override */
+        body.dark-theme {
+            --light-bg: #0b1713;
+            --card-bg: #12241d;
+            --text-main: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 80px;
+            transition: background-color 0.3s ease, color 0.3s ease, font-size 0.2s ease;
+        }
+
+        /* Header section */
+        header {
+            background: linear-gradient(rgba(6, 23, 18, 0.88), rgba(6, 23, 18, 0.95)), 
+                        url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800&auto=format&fit=crop') center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 25px 15px 15px;
+        }
+
+        .site-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+        }
+
+        header h1 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        /* Controls Bar */
+        .controls-bar {
+            max-width: 800px;
+            margin: 15px auto 0;
+            padding: 0 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+            min-width: 180px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 38px;
+            border-radius: 20px;
+            border: 1px solid #cbd5e1;
+            outline: none;
+            font-size: 0.9rem;
+            background: var(--card-bg);
+            color: var(--text-main);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .accessibility-tools {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .tool-btn {
+            background: var(--card-bg);
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .tool-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Styled Theme Toggle Button */
+        .theme-btn {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: var(--accent);
+            border: 1.5px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            padding: 8px 14px;
+        }
+
+        body.dark-theme .theme-btn {
+            background: linear-gradient(135deg, #fef08a, #fde047);
+            color: #0f172a;
+            border: 1.5px solid #facc15;
+        }
+
+        /* Realtime Clock & Prayer Widget */
+        .widgets-section {
+            padding: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .clock-card {
+            background: var(--dark-bg);
+            color: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--accent);
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .clock-card .city {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .clock-card .time {
+            font-size: 2.2rem;
+            font-weight: bold;
+            font-family: monospace;
+            color: #fff;
+            margin: 2px 0;
+        }
+
+        .clock-card .date {
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        .clock-card .hijri-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        /* Prayer Times Grid */
+        .prayer-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        body.dark-theme .prayer-card {
+            border-color: #244236;
+        }
+
+        .prayer-card h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 8px;
+        }
+
+        body.dark-theme .prayer-card h3 {
+            color: var(--accent);
+        }
+
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .prayer-item {
+            background: #f8faf9;
+            padding: 8px 5px;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+        }
+
+        body.dark-theme .prayer-item {
+            background: #1a3027;
+            border-color: #244236;
+        }
+
+        .prayer-item .name {
+            font-size: 0.75rem;
+            color: #64748b;
+            display: block;
+        }
+
+        body.dark-theme .prayer-item .name {
+            color: #94a3b8;
+        }
+
+        .prayer-item .val {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        body.dark-theme .prayer-item .val {
+            color: var(--accent);
+        }
+
+        /* Layout Main & Tabs */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+
+        body.dark-theme .card {
+            border-left-color: var(--accent);
+            border-top: 1px solid #244236;
+            border-right: 1px solid #244236;
+            border-bottom: 1px solid #244236;
+        }
+
+        .card-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        body.dark-theme .card h2 {
+            color: var(--accent);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        body.dark-theme .card p {
+            color: #cbd5e1;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            background: #f8faf9;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 1px solid #edf2f7;
+        }
+
+        body.dark-theme .author-box {
+            background: #1a3027;
+            border-color: #244236;
+        }
+
+        .author-img {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        /* Quran & Dua Box */
+        .quran-box {
+            background-color: #f0f7f4;
+            border: 1px dashed var(--secondary);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        body.dark-theme .quran-box {
+            background-color: #0b1c15;
+            border-color: var(--secondary);
+        }
+
+        .quran-box .arabic {
+            font-size: 1.4rem;
+            text-align: right;
+            color: var(--primary);
+            margin-bottom: 10px;
+            line-height: 1.8;
+            direction: rtl;
+        }
+
+        body.dark-theme .quran-box .arabic {
+            color: var(--accent);
+        }
+
+        .quran-box .translation {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #1e293b;
+        }
+
+        body.dark-theme .quran-box .translation {
+            color: #cbd5e1;
+        }
+
+        .quran-box .ref {
+            display: block;
+            margin-top: 8px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            text-align: right;
+        }
+
+        .copy-btn {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            background: transparent;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .copy-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Hadith Box */
+        .hadith-quote {
+            border-left: 3px solid var(--accent);
+            padding: 12px;
+            margin: 12px 0;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #475569;
+            background: #fafafa;
+            border-radius: 0 8px 8px 0;
+        }
+
+        body.dark-theme .hadith-quote {
+            background: #1a3027;
+            color: #cbd5e1;
+        }
+
+        /* Step Guide Styles */
+        .step-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .step-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #f8faf9;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+        }
+
+        body.dark-theme .step-card {
+            background: #1a3027;
+            border-color: #244236;
+        }
+
+        .step-num {
+            background: var(--primary);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .step-card strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        body.dark-theme .step-card strong {
+            color: var(--accent);
+        }
+
+        .step-card p {
+            font-size: 0.88rem;
+            margin: 0;
+            color: #475569;
+        }
+
+        body.dark-theme .step-card p {
+            color: #cbd5e1;
+        }
+
+        /* Calendar Styles */
+        .calendar-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .calendar-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 0.9rem;
+        }
+
+        body.dark-theme .calendar-item {
+            border-bottom-color: #244236;
+        }
+
+        .calendar-item:last-child {
+            border-bottom: none;
+        }
+
+        .date-badge {
+            background: #e2e8f0;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+
+        body.dark-theme .date-badge {
+            background: #1a3027;
+            color: var(--accent);
+        }
+
+        .event-title {
+            color: #334155;
+            font-weight: 500;
+            text-align: right;
+            padding-left: 10px;
+        }
+
+        body.dark-theme .event-title {
+            color: #cbd5e1;
+        }
+
+        /* Bottom Mobile Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            border-top: 1px solid #e2e8f0;
+            z-index: 1000;
+            overflow-x: auto;
+        }
+
+        body.dark-theme .bottom-nav {
+            background: #12241d;
+            border-top-color: #244236;
+        }
+
+        .nav-btn {
+            color: #64748b;
+            background: none;
+            border: none;
+            text-decoration: none;
+            font-size: 0.68rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+            min-width: 55px;
+        }
+
+        body.dark-theme .nav-btn {
+            color: #94a3b8;
+        }
+
+        .nav-btn i {
+            font-size: 1.05rem;
+        }
+
+        .nav-btn.active {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        body.dark-theme .nav-btn.active {
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 15px;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/IslamSymbol_%D8%B1.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Əhli-Beyt Loqo" class="site-logo">
+        <h1>Əhli-Beyt (ə.s)</h1>
+        <p>İslamın Nuru, Hidayət Çırağı və Quran Yolu</p>
+    </header>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Axtarış et..." onkeyup="searchCards()">
+        </div>
+        <div class="accessibility-tools">
+            <!-- Theme Toggle Button (Night/Day) -->
+            <button class="tool-btn theme-btn" id="themeBtn" onclick="toggleTheme()" title="Temanı dəyiş">
+                <i class="fas fa-moon" id="themeIcon"></i>
+                <span id="themeText">Gecə</span>
+            </button>
+            <button class="tool-btn" onclick="changeFontSize(1)" title="Mətni böyüt">A+</button>
+            <button class="tool-btn" onclick="changeFontSize(-1)" title="Mətni kiçilt">A-</button>
+            <button class="tool-btn" onclick="shareWebsite()" title="Paylaş"><i class="fas fa-share-alt"></i></button>
+        </div>
+    </div>
+
+    <!-- Widgets Section -->
+    <section class="widgets-section">
+        <div class="clock-card">
+            <div class="city"><i class="fas fa-location-dot"></i> Bakı Vaxtı</div>
+            <div class="time" id="baku-clock">00:00:00</div>
+            <div class="date" id="baku-date">Yüklənir...</div>
+            <div class="hijri-date" id="hijri-date"><i class="fas fa-moon"></i> Hicri Təqvim: Yüklənir...</div>
+        </div>
+
+        <div class="prayer-card">
+            <h3><i class="fas fa-mosque"></i> Namaz Vaxtları (Bakı)</h3>
+            <div class="prayer-grid">
+                <div class="prayer-item"><span class="name">Sübh</span><span class="val" id="p-fajr">--:--</span></div>
+                <div class="prayer-item"><span class="name">Gün çıxır</span><span class="val" id="p-sunrise">--:--</span></div>
+                <div class="prayer-item"><span class="name">Zöhr</span><span class="val" id="p-dhuhr">--:--</span></div>
+                <div class="prayer-item"><span class="name">Əsr</span><span class="val" id="p-asr">--:--</span></div>
+                <div class="prayer-item"><span class="name">Məğrib</span><span class="val" id="p-maghrib">--:--</span></div>
+                <div class="prayer-item"><span class="name">İşa</span><span class="val" id="p-isha">--:--</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- TAB 1: ANA SƏHİFƏ -->
+        <div id="tab-home" class="tab-content active">
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-calendar-day"></i> Günün Ayəsi / Tövsiyəsi</h2>
+                </div>
+                <div class="quran-box" style="margin:0;">
+                    <div class="translation" id="daily-text" style="font-size: 1.05rem; color: var(--primary); font-weight: 600;">Yüklənir...</div>
+                    <span class="ref" id="daily-ref">— Günün tövsiyəsi</span>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-star-and-crescent"></i> Əhli-Beyt (ə.s) Kimlərdir?</h2>
+                </div>
+                <p><strong>Əhli-Beyt</strong> — Peyğəmbərimiz Həzrət Məhəmmədin (s.ə.s) pak ailəsidir. Şiə əqidəsinə əsasən, Əhli-Beytin özəyini "Ali-Əba" (Əba əshabı) təşkil edir:</p>
+                <p>• Həzrət Məhəmməd Peyğəmbər (s.ə.s)<br>
+                   • İmam Əli (ə)<br>
+                   • Həzrət Fatimeyi-Zəhra (s.ə)<br>
+                   • İmam Həsən (ə)<br>
+                   • İmam Hüseyn (ə) və onların soyundan olan 9 Məsum İmam (ə).</p>
+            </section>
+
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-scroll"></i> Səqəleyn Hədisi</h2>
+                </div>
+                <div class="hadith-quote">
+                    "Mən sizin aranızda iki dəyərli əmanət qoyub gedirəm: Biri Allahın Kitabı (Quran), digəri isə mənim Əhli-Beytimdir. Bunlar Kövsər hovuzunun kənarında mənə qovuşana qədər bir-birindən ayrılmazlar."
+                    <br><br><strong>— Həzrət Məhəmməd (s.ə.s)</strong>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 2: DUA VƏ ZİYARƏTLƏR -->
+        <div id="tab-dua" class="tab-content">
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-hands-praying"></i> Mübarək Dua və Ziyarətlər</h2>
+                </div>
+                <p>Məşhur dualar və məsumların ziyarətnamələri:</p>
+
+                <!-- Dua Fərəc -->
+                <p><strong>1. Fərəc Duası (İmam Məhdi ə.f üçün):</strong></p>
+                <div class="quran-box" id="duabox1">
+                    <div class="arabic">اللَّهُمَّ كُنْ لِوَلِيِّكَ الحُجَّةِ بْنِ الحَسَنِ صَلَوَاتُكَ عَلَيْهِ وَعَلَى آبَائِهِ فِي هَذِهِ السَّاعَةِ وَفِي كُلِّ سَاعَةٍ وَلِيّاً وَحَافِظاً وَقَائِداً وَنَاصِراً وَدَلِيلاً وَعَيْناً حَتَّى تُسْكِنَهُ أَرْضَكَ طَوْعاً وَتُمَتِّعَهُ فِيهَا طَوِيلاً</div>
+                    <div class="translation">"İlahi! Canişinin, Həccət ibnil-Həsənin — Sənin salavatın ona və ata-babalarına olsun — bu saatında və bütün saatlarda vəlisi, qoruyucusu, rəhbəri, köməkçisi, yol göstərəni və gözü ol! Hətta onu Öz yer üzündə sakitləşdirəsən və uzun müddət faydalandırasan."</div>
+                    <span class="ref">— Fərəc Duası</span>
+                    <button class="copy-btn" title="Kopyala" onclick="copyText('duabox1')"><i class="far fa-copy"></i></button>
+                </div>
+
+                <!-- Dua Kümeyl -->
+                <p><strong>2. Kümeyl Duası (Qısa hissə):</strong></p>
+                <div class="quran-box" id="duabox2">
+                    <div class="arabic">اللَّهُمَّ اغْفِرْ لِيَ الذُّنُوبَ الَّتِي تَهْتِكُ الْعِصَمَ ، اللَّهُمَّ اغْفِرْ لِيَ الذُّنُوبَ الَّتِي تُنْزِلُ النِّقَمَ</div>
+                    <div class="translation">"İlahi! Mənim İsməti (pərdəni) yırtan günahlarımı bağışla! İlahi! Mənim bəlaları nazil edən günahlarımı bağışla!"</div>
+                    <span class="ref">— İmam Əlinin (ə) Kümeyl duası</span>
+                    <button class="copy-btn" title="Kopyala" onclick="copyText('duabox2')"><i class="far fa-copy"></i></button>
+                </div>
+
+                <!-- Ziyarət Aşura -->
+                <p><strong>3. Aşura Ziyarətnaməsi (Salam):</strong></p>
+                <div class="quran-box" id="duabox3">
+                    <div class="arabic">السَّلاَمُ عَلَيْكَ يَا أَبَا عَبْدِ اللَّهِ وَعَلَى الأَرْوَاحِ الَّتِي حَلَّتْ بِفِنَائِكَ</div>
+                    <div class="translation">"Salam olsun sənə ey Əba Əbdilləh və sənə sığınan (səninlə birlikdə şəhid olan) ruhlara!"</div>
+                    <span class="ref">— Ziyarəti-Aşura</span>
+                    <button class="copy-btn" title="Kopyala" onclick="copyText('duabox3')"><i class="far fa-copy"></i></button>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 3: NAMAZ TƏLİMATI -->
+        <div id="tab-namaz" class="tab-content">
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-person-praying"></i> Namaz Təlimatı (Qaydalar)</h2>
+                </div>
+                <p>2 rəkətli namazın addım-addım qılınma ardıcıllığı:</p>
+                <div class="step-container">
+                    <div class="step-card">
+                        <span class="step-num">1</span>
+                        <div>
+                            <strong>Niyyət və Təkbirətül-Ehram</strong>
+                            <p>Qibləyə tərəf durub xalis niyyət edilir və "Allahu Əkbər" deyərək namaza başlanılır.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-num">2</span>
+                        <div>
+                            <strong>Qiyam (Fatihə və Surə)</strong>
+                            <p>Düz duraraq Fatihə surəsi və ardınca bir tam surə (məsələn, İxlas surəsi) oxunur.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-num">3</span>
+                        <div>
+                            <strong>Rükü</strong>
+                            <p>Əyilib əllər dizlərə qoyulur və 3 dəfə "Sübhanallah" və ya 1 dəfə "Sübhanə Rəbbiyəl-Əzimi və bihəmdih" deyilir.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-num">4</span>
+                        <div>
+                            <strong>Səcdə</strong>
+                            <p>Alın möhürə qoyulmaqla 2 dəfə səcdə edilir: 3 dəfə "Sübhanallah" və ya 1 dəfə "Sübhanə Rəbbiyəl-A'la və bihəmdih" deyilir.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-num">5</span>
+                        <div>
+                            <strong>Təşəhhüd və Salam</strong>
+                            <p>Sonuncu rəkətdə oturan yerdə Təşəhhüd və Salamlar oxunaraq namaz tamamlanır.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 4: İSLAMİ TƏQVİM -->
+        <div id="tab-calendar" class="tab-content">
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-calendar-alt"></i> Mühüm İslami Günlər</h2>
+                </div>
+                <p>Hicri təqviminə əsasən ilin əsas mübarək və əza günləri:</p>
+                <ul class="calendar-list">
+                    <li class="calendar-item"><span class="date-badge">1 Məhərrəm</span><span class="event-title">Hicri ilinin başlanğıcı</span></li>
+                    <li class="calendar-item"><span class="date-badge">10 Məhərrəm</span><span class="event-title">Aşura günü (İmam Hüseyn ə.s şəhadəti)</span></li>
+                    <li class="calendar-item"><span class="date-badge">20 Səfər</span><span class="event-title">Ərbəin günü</span></li>
+                    <li class="calendar-item"><span class="date-badge">17 Rəbiül-əvvəl</span><span class="event-title">Peyğəmbərimiz (s.ə.s) və İmam Cəfər Sadiq (ə) mövludu</span></li>
+                    <li class="calendar-item"><span class="date-badge">13 Rəcəb</span><span class="event-title">İmam Əli (ə) mövludu</span></li>
+                    <li class="calendar-item"><span class="date-badge">15 Şəban</span><span class="event-title">Mövlud: İmam Məhdi (ə.f) — Nisfu-Şəban</span></li>
+                    <li class="calendar-item"><span class="date-badge">1 Ramazan</span><span class="event-title">Mübarək Ramazan ayının başlanğıcı</span></li>
+                    <li class="calendar-item"><span class="date-badge">18-22 Ramazan</span><span class="event-title">Qədir gecələri və İmam Əli (ə) şəhadəti</span></li>
+                    <li class="calendar-item"><span class="date-badge">1 Şəvval</span><span class="event-title">Ramazan (Fitr) Bayramı</span></li>
+                    <li class="calendar-item"><span class="date-badge">18 Zilhiccə</span><span class="event-title">Qədir-Xum Bayramı</span></li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- TAB 5: HACI ŞAHİN -->
+        <div id="tab-haci-sahin" class="tab-content">
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-quote-left"></i> Hacı Şahin Həsənli Tövsiyələri</h2>
+                </div>
+
+                <div class="author-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/az/9/94/Hac%C4%B1_%C5%9Eahin.jpg?utm_source=az.wikipedia.org&utm_campaign=index&utm_content=original" alt="Hacı Şahin Həsənli" class="author-img">
+                    <div>
+                        <strong style="color: var(--primary); font-size: 1.05rem; display: block;">Hacı Şahin Həsənli</strong>
+                        <span style="font-size: 0.8rem; color: #64748b;">Görkəmli din xadimi və vaiz</span>
+                    </div>
+                </div>
+
+                <div class="hadith-quote">
+                    "Həqiqi azadlıq Allaha bəndəlikdədir. İnsan Allaha bəndə olduqca başqa nəfsi istəklərin və mənfi vərdişlərin əsarətindən azad olar."
+                </div>
+
+                <div class="hadith-quote">
+                    "İnsan gərək hər bir işdə səmimi olsun. Səmimiyyət və xalis niyyət olan yerdə Allahın bərəkəti və rəhməti daim mövcuddur."
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 6: QURAN & AUDIO -->
+        <div id="tab-quran" class="tab-content">
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-headphones"></i> Quran Səsli Oxunuşu</h2>
+                </div>
+                <p>Məşhur qarilərin ifasında surələri canlı dinləyin:</p>
+                <div style="margin-top: 10px;">
+                    <select id="surahSelect" onchange="changeSurah()" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; margin-bottom: 10px; font-weight: 600;">
+                        <option value="https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3">1. Fatihə Surəsi (Mişari Rəşid)</option>
+                        <option value="https://cdn.islamic.network/quran/audio/128/ar.alafasy/112.mp3">112. İxlas Surəsi (Mişari Rəşid)</option>
+                        <option value="https://cdn.islamic.network/quran/audio/128/ar.alafasy/113.mp3">113. Fələq Surəsi (Mişari Rəşid)</option>
+                        <option value="https://cdn.islamic.network/quran/audio/128/ar.alafasy/114.mp3">114. Nas Surəsi (Mişari Rəşid)</option>
+                    </select>
+                    <audio id="quranPlayer" controls style="width: 100%; border-radius: 8px;">
+                        <source id="audioSource" src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3" type="audio/mpeg">
+                        Səsləndirmə dəstəklənmir.
+                    </audio>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-header-flex">
+                    <h2><i class="fas fa-quran"></i> Qurani-Kərimdə Əhli-Beyt</h2>
+                </div>
+                
+                <p><strong>1. Təthir Ayəsi:</strong></p>
+                <div class="quran-box" id="qbox1">
+                    <div class="arabic">إِنَّمَا يُرِيدُ اللَّهُ لِيُذْهِبَ عَنكُمُ الرِّجْسَ أَهْلَ الْبَيْتِ وَيُطَهِّرَكُمْ تَطْهِيرًا</div>
+                    <div class="translation">"Həqiqətən, Allah siz Əhli-Beytdən hər cür çirkablığı (günahı) uzaqlaşdırmaq və sizi tamamilə pak etmək istəyir!"</div>
+                    <span class="ref">— Əhzab surəsi, 33-cü ayə</span>
+                    <button class="copy-btn" title="Kopyala" onclick="copyText('qbox1')"><i class="far fa-copy"></i></button>
+                </div>
+
+                <p><strong>2. Məvəddət Ayəsi:</strong></p>
+                <div class="quran-box" id="qbox2">
+                    <div class="arabic">قُل لَّا أَسْأَلُكُمْ عَلَيْهِ أَجْرًا إِلَّا الْمَوَدَّةَ فِي الْقُرْبَىٰ</div>
+                    <div class="translation">"De: Sizdən bunun (risaləti çatdırmağımın) müqabilində yaxınlarıma (Əhli-Beytimə) sevgidən başqa bir əvəz istəmirəm!"</div>
+                    <span class="ref">— Şura surəsi, 23-cü ayə</span>
+                    <button class="copy-btn" title="Kopyala" onclick="copyText('qbox2')"><i class="far fa-copy"></i></button>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" onclick="switchTab('tab-home', this)"><i class="fas fa-home"></i>Ana Səhifə</button>
+        <button class="nav-btn" onclick="switchTab('tab-dua', this)"><i class="fas fa-hands-praying"></i>Dua</button>
+        <button class="nav-btn" onclick="switchTab('tab-namaz', this)"><i class="fas fa-person-praying"></i>Namaz</button>
+        <button class="nav-btn" onclick="switchTab('tab-calendar', this)"><i class="fas fa-calendar-alt"></i>Təqvim</button>
+        <button class="nav-btn" onclick="switchTab('tab-haci-sahin', this)"><i class="fas fa-quote-right"></i>Hacı Şahin</button>
+        <button class="nav-btn" onclick="switchTab('tab-quran', this)"><i class="fas fa-quran"></i>Quran</button>
+        <a href="https://youtube.com/@ahlibeyt044" target="_blank" class="nav-btn" style="color: var(--yt-red);"><i class="fab fa-youtube"></i>YouTube</a>
+    </nav>
+
+    <footer>
+        <p>&copy; Əhli-Beyt Portal | Bakı, Azərbaycan</p>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic (Day/Night)
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+
+            if (isDark) {
+                themeIcon.className = 'fas fa-sun';
+                themeText.textContent = 'Gündüz';
+                localStorage.setItem('siteTheme', 'dark');
+            } else {
+                themeIcon.className = 'fas fa-moon';
+                themeText.textContent = 'Gecə';
+                localStorage.setItem('siteTheme', 'light');
+            }
+        }
+
+        // Restore saved theme on page load
+        if (localStorage.getItem('siteTheme') === 'dark') {
+            document.body.classList.add('dark-theme');
+            document.getElementById('themeIcon').className = 'fas fa-sun';
+            document.getElementById('themeText').textContent = 'Gündüz';
+        }
+
+        // Tab Switcher Logic
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            if(btn) btn.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Realtime Clock
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            document.getElementById('baku-clock').textContent = `${hours}:${minutes}:${seconds}`;
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateStr = now.toLocaleDateString('az-AZ', options);
+            document.getElementById('baku-date').textContent = dateStr;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Prayer Times & Hijri Calendar Fetch
+        async function fetchPrayerTimes() {
+            try {
+                const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Baku&country=Azerbaijan&method=0');
+                const data = await response.json();
+                
+                if (data && data.data) {
+                    const t = data.data.timings;
+                    document.getElementById('p-fajr').textContent = t.Fajr;
+                    document.getElementById('p-sunrise').textContent = t.Sunrise;
+                    document.getElementById('p-dhuhr').textContent = t.Dhuhr;
+                    document.getElementById('p-asr').textContent = t.Asr;
+                    document.getElementById('p-maghrib').textContent = t.Maghrib;
+                    document.getElementById('p-isha').textContent = t.Isha;
+
+                    if (data.data.date && data.data.date.hijri) {
+                        const h = data.data.date.hijri;
+                        document.getElementById('hijri-date').innerHTML = `<i class="fas fa-moon"></i> Hicri Təqvim: ${h.day} ${h.month.ar} (${h.month.en}) ${h.year} AH`;
+                    }
+                }
+            } catch (error) {
+                console.error("Məlumat yüklənmədi:", error);
+            }
+        }
+        fetchPrayerTimes();
+
+        // Daily Quote Logic
+        const dailyQuotes = [
+            { text: '"Şübhəsiz ki, çətinliklə yanaşı bir asanlıq da vardır!"', ref: '— İnşirah surəsi, 5-ci ayə' },
+            { text: '"Allah səbr edənləri sevər."', ref: '— Ali-İmran surəsi, 146-cı ayə' },
+            { text: '"Məni yad edin ki, Mən də sizi yad edim..."', ref: '— Bəqərə surəsi, 152-ci ayə' },
+            { text: '"Xeyir işlərdə bir-birinizlə yarışın!"', ref: '— Bəqərə surəsi, 148-ci ayə' },
+            { text: '"Qəlblər yalnız Allahı zikr etməklə aram tapar."', ref: '— Rəd surəsi, 28-ci ayə' }
+        ];
+
+        function loadDailyQuote() {
+            const today = new Date();
+            const index = (today.getDate() + today.getMonth()) % dailyQuotes.length;
+            document.getElementById('daily-text').textContent = dailyQuotes[index].text;
+            document.getElementById('daily-ref').textContent = dailyQuotes[index].ref;
+        }
+        loadDailyQuote();
+
+        // Quran Audio Player Changer
+        function changeSurah() {
+            const player = document.getElementById('quranPlayer');
+            const select = document.getElementById('surahSelect');
+            player.src = select.value;
+            player.play();
+        }
+
+        // Search Filter
+        function searchCards() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.tab-content.active .card');
+
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                card.style.display = text.includes(input) ? "block" : "none";
+            });
+        }
+
+        // Font Size Changer
+        let currentFontSize = 16;
+        function changeFontSize(delta) {
+            currentFontSize += delta;
+            if (currentFontSize < 12) currentFontSize = 12;
+            if (currentFontSize > 22) currentFontSize = 22;
+            document.body.style.fontSize = currentFontSize + 'px';
+        }
+
+        // Copy Text
+        function copyText(containerId) {
+            const container = document.getElementById(containerId);
+            const textToCopy = container.innerText.replace('Kopyala', '');
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Mətn kopyalandı!');
+            });
+        }
+
+        // Share
+        function shareWebsite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Əhli-Beyt (ə.s) Portal',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Səhifə ünvanı kopyalandı!');
+            }
+        }
+    </script>
+</body>
+</html>
